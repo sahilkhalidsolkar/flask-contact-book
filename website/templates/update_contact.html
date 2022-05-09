@@ -1,0 +1,50 @@
+
+{%extends "base.html"%}
+<!-- title -->
+{% block title %}Home{%endblock%}
+<!-- content -->
+{%block content%}
+<h1 align="center">Update Contact</h1>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="exampleInputname" class="form-label">Name</label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputname" 
+        name="name"
+        value="{{ contact_to_update_details.name}}"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputphone" class="form-label">Phone No.</label> 
+        <input type="number" 
+        class="form-control" 
+        id="exampleInputphone" 
+        name="phone"
+        value="{{ contact_to_update_details.phone_no}}"
+        >
+      </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail" class="form-label">Email address</label>
+        <input type="email" 
+        class="form-control" 
+        id="exampleInputEmail" 
+        name="email"
+        value="{{ contact_to_update_details.email}}"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputAddress" class="form-label">Address</label>
+        <textarea 
+        class="form-control" 
+        id="exampleInputAddress" 
+        name="address"
+       
+        >{{contact_to_update_details.address}}</textarea>
+    <br>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Update Contact <i class="fa fa-pencil" aria-hidden="true"></i></button>
+    </div>
+</form>
+{%endblock%}

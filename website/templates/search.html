@@ -1,0 +1,75 @@
+
+{%extends "base.html"%}
+<!-- title -->
+{% block title %}Home{%endblock%}
+<!-- content -->
+{%block content%}
+<br>
+<form method="POST">
+<div class="input-group mb-3">
+    <input type="text" name="query" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+    </div>
+    
+  </div>
+</form>
+<br>
+{% if searched_contacts %}
+{% for contact in searched_contacts %}
+<div class="col-sm-12  ">
+    <div class="card">
+        <div class="card-header ">
+          <h3>{{contact.name.upper()}}</h3>
+        </div>
+        <div class="card-body card-title">
+          <h5 class="card-title">Phone no.</h5>
+          <p class="card-text">{{contact.phone_no}}</p>
+          <h5 class="card-title">Email</h5>
+          <p class="card-text">{{contact.email}}</p>
+          <h5 class="card-title">Address</h5>
+          <p class="card-text">{{contact.address}}</p>
+          <button  class="btn btn-danger" onClick="deleteContact({{ contact.id }})">Delete</button>
+          <a  
+          class="btn btn-secondary"
+          id="update_button"
+          href="/update_contact/{{contact.id}}"
+          >
+          Update
+        </a>
+        </div>
+      </div>
+      <br/>
+    </div>
+{% endfor %}
+{% else %}
+<p>No Contact found</p>
+{% endif %}
+<!-- {% for contact in searched_contacts %}
+<div class="col-sm-12  ">
+    <div class="card">
+        <div class="card-header ">
+          <h3>{{contact.name.upper()}}</h3>
+        </div>
+        <div class="card-body card-title">
+          <h5 class="card-title">Phone no.</h5>
+          <p class="card-text">{{contact.phone_no}}</p>
+          <h5 class="card-title">Email</h5>
+          <p class="card-text">{{contact.email}}</p>
+          <h5 class="card-title">Address</h5>
+          <p class="card-text">{{contact.address}}</p>
+          <button  class="btn btn-danger" onClick="deleteContact({{ contact.id }})">Delete</button>
+          <a  
+          class="btn btn-secondary"
+          id="update_button"
+          href="/update_contact/{{contact.id}}"
+          >
+          Update
+        </a>
+        </div>
+      </div>
+      <br/>
+    </div>
+{% endfor %} -->
+
+{%endblock%}

@@ -1,0 +1,128 @@
+
+{%extends "base.html"%}
+<!-- title -->
+{% block title %}Home{%endblock%}
+<!-- content -->
+{%block content%}
+<br>
+<h1 align="center"> <i class="fa fa-address-book" aria-hidden="true"></i> Contact Book </h1>
+<div class="row">
+  <div class="col-sm-12  ">
+<form method="POST">
+  <!-- <textarea name="note" id="note" class="form-control"></textarea> -->
+  <div class="mb-3">
+      <label for="exampleInputname" class="form-label">Name</label>
+      <input type="text" 
+      class="form-control" 
+      id="exampleInputname" 
+      name="name"
+      >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputphone" class="form-label">Phone No.</label> 
+      <input type="number" 
+      class="form-control" 
+      id="exampleInputphone" 
+      name="phone"
+      >
+    </div>
+  <div class="mb-3">
+      <label for="exampleInputEmail" class="form-label">Email address</label>
+      <input type="email" 
+      class="form-control" 
+      id="exampleInputEmail" 
+      name="email"
+      >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputAddress" class="form-label">Address</label>
+      <textarea 
+      class="form-control" 
+      id="exampleInputAddress" 
+      name="address"
+      ></textarea>
+  <br>
+  <div align="center">
+      <button type="submit" class="btn btn-primary">Add Contact</button>
+  </div>
+</form>
+</div>
+<br/>
+
+<!-- <ul class="list-group list-group-flush" id="notes" > -->
+    {% for contact in user.contacts %}
+    <div class="col-sm-12  ">
+    <div class="card">
+        <div class="card-header ">
+          <h3>{{contact.name.upper()}}</h3>
+        </div>
+        <div class="card-body card-title">
+          <h5 class="card-title">Phone no.</h5>
+          <p class="card-text">{{contact.phone_no}}</p>
+          <h5 class="card-title">Email</h5>
+          <p class="card-text">{{contact.email}}</p>
+          <h5 class="card-title">Address</h5>
+          <p class="card-text">{{contact.address}}</p>
+          <button  class="btn btn-danger" onClick="deleteContact({{ contact.id }})">
+            Delete <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+          <a  
+          class="btn btn-secondary"
+          id="update_button"
+          href="/update_contact/{{contact.id}}"
+          >
+          Update <i class="fa fa-pencil" aria-hidden="true"></i>
+        </a>
+        </div>
+      </div>
+      <br/>
+    </div>
+  <!-- </div> -->
+    <!-- <li class="list-group-item">{{ contact.name }}
+    <button type="button" 
+     class="btn-close"
+     onClick="deleteNote({{ contact.id }})"
+    >
+    </button>
+    </li> -->
+    {% endfor %}
+</div>
+<!-- </ul> -->
+<!-- <form method="POST">
+    <div class="mb-3">
+        <label for="exampleInputname" class="form-label">Name</label>
+        <input type="text" 
+        class="form-control" 
+        id="exampleInputname" 
+        name="name"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputphone" class="form-label">Phone No.</label> 
+        <input type="number" 
+        class="form-control" 
+        id="exampleInputphone" 
+        name="phone"
+        >
+      </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail" class="form-label">Email address</label>
+        <input type="email" 
+        class="form-control" 
+        id="exampleInputEmail" 
+        name="email"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputAddress" class="form-label">Address</label>
+        <textarea 
+        class="form-control" 
+        id="exampleInputAddress" 
+        name="address"
+        ></textarea>
+    <br>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Contact</button>
+    </div>
+</form> -->
+{%endblock%}
